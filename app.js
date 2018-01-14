@@ -46,11 +46,12 @@ function loadURL(bodyURL) {
             // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
             var $ = cheerio.load(html);
             // Finally, we'll define the variables we're going to capture
-            log('HTML URL Loaded By Cheerio: ' + body);
+            log('HTML URL Loaded By Cheerio:');
             var title, release, rating;
             var json = { title: "", release: "", rating: "" };
             $('.js-postMetaLockup').filter(function() {
                 // Let's store the data we filter into a variable so we can easily see what's going on.
+                log('js-postMetaLockup class finded:');
                 var data = $(this);
                 // In examining the DOM we notice that the title rests within the first child element of the header tag. 
                 // Utilizing jQuery we can easily navigate and get the text by writing the following code:

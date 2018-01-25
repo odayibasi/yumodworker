@@ -25,9 +25,11 @@ var server = http.createServer(function(req, res) {
                 log('SQS Come');
                 var bodyObj = JSON.parse(body);
                 var key = decodeURIComponent(bodyObj.Records[0].s3.object.key);
-                log('ReceivedX URL: ' + key);
-                var sqsModel = { storyModelPath: key }
-                stories2TextAPI.loadUserStoriesAndProcess(sqsModel);
+                if (key.includes("storymodel.json")) {
+                    log('ReceivedX URL: ' + key);
+                    var sqsModel = { storyModelPath: key }
+                    stories2TextAPI.loadUserStoriesAndProcess(sqsModel);
+                }
             } else if (req.url = '/scheduled') {
                 log('Received task ' + req.headers['x-aws-sqsd-taskname'] + ' scheduled at ' + req.headers['x-aws-sqsd-scheduled-at']);
             }

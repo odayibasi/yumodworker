@@ -3,10 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "async": "^2.6.0",
+    "aws-sdk": "^2.182.0",
+    "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "s3fs": "^2.5.0",
+    "underscore": "^1.8.3"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha $(find test -name '*.js')"
   }
 }
